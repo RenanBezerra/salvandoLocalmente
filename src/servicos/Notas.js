@@ -23,7 +23,7 @@ export async function adicionaNota(nota) {
 export async function buscaNotas() {
   return new Promise((resolve) => {
     db.transaction((transaction) => {
-      transaction.executeSql("SELECT titulo, categoria, texto FROM Notas;", [], (transaction, resultado) => {
+      transaction.executeSql("SELECT id, titulo, categoria, texto FROM Notas;", [], (transaction, resultado) => {
           resolve(resultado.rows._array)
       })
 
