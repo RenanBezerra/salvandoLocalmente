@@ -50,3 +50,13 @@ export async function removeNota(nota) {
     })
   })
 }
+
+export async function filtraPorCategoria(categoria) {
+  return new Promise((resolve) => {
+      db.transaction((tx) => {
+          tx.executeSql("SELECT * FROM Notas WHERE categoria = ?;", [categoria], (tx, results) => {
+              resolve(results.rows._array)
+          })
+      })
+  })
+}
